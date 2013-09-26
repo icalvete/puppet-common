@@ -1,0 +1,1 @@
+class common::service {}
