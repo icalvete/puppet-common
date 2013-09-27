@@ -1,5 +1,9 @@
 class common::redhat {
 
+  package{'ruby-devel':
+    ensure => present
+  }
+
   exec {'epel_redhat_install_package':
     cwd     => '/tmp/',
     command => "/bin/rpm -i ${common::params::redhat_epel_package}",
