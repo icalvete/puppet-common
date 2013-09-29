@@ -10,6 +10,10 @@ class common::install {
     ensure => present
   }
 
+  @package {'erlang':
+    ensure => present
+  }
+
   # This can be instaled in all nodes
   package {'rubygems':
     ensure => present
