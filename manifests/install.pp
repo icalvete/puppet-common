@@ -31,6 +31,10 @@ class common::install {
     ensure  => present
   }
 
+  class {'collectd':
+    amqp_enabled => false
+  }
+
   cron { 'cron_mailto':
     command     => '/bin/echo > /dev/null',
     user        => 'root',
