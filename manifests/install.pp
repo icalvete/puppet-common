@@ -14,6 +14,11 @@ class common::install {
     ensure => present
   }
 
+  @package {'stomp':
+    ensure   => present,
+    provider => 'gem'
+  }
+
   # This can be instaled in all nodes
   package {'rubygems':
     ensure => present
@@ -34,6 +39,8 @@ class common::install {
   class {'collectd':
     amqp_enabled => false
   }
+
+  include mcollective
 
   cron { 'cron_mailto':
     command     => '/bin/echo > /dev/null',
