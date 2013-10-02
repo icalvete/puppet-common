@@ -14,6 +14,10 @@ class common::install {
     ensure => present
   }
 
+  @package {'libltdl7':
+    ensure   => present,
+  }
+
   @package {'stomp':
     ensure   => present,
     provider => 'gem'
@@ -32,6 +36,10 @@ class common::install {
     ensure  => present
   }
 
+  package {'wget':
+    ensure  => present
+  }
+
   package {$common::params::cron_package:
     ensure  => present
   }
@@ -40,7 +48,7 @@ class common::install {
     amqp_enabled => false
   }
 
-  include mcollective
+  include mcollective, mcollective::client
 
   cron { 'cron_mailto':
     command     => '/bin/echo > /dev/null',
