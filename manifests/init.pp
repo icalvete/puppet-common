@@ -16,20 +16,6 @@ class common inherits params {
     require => Class['common::config']
   }
 
-
-  case $::osfamily {
-
-    /^(Debian|Ubuntu)$/: {
-      include common::debian
-    }
-    /^(CentOS|RedHat)$/: {
-      include common::redhat
-    }
-    default: {
-      fail ("${::operatingsystem} not supported.")
-    }
-  }
-
   anchor {'common::end':
     require => Class['common::service']
   }

@@ -1,27 +1,19 @@
 class common::install {
 
+  case $::osfamily {
 
-  # This packages can be realized in all manifest
-  @package {'openjdk-7-jre':
-    ensure => present
+    /^(Debian|Ubuntu)$/: {
+      include common::debian::install
+    }
+    /^(CentOS|RedHat)$/: {
+      include common::redhat::install
+    }
+    default: {
+      fail ("${::operatingsystem} not supported.")
+    }
   }
 
-  @package {'unzip':
-    ensure => present
-  }
-
-  @package {'erlang':
-    ensure => present
-  }
-
-  @package {'libltdl7':
-    ensure   => present,
-  }
-
-  @package {'stomp':
-    ensure   => present,
-    provider => 'gem'
-  }
+  include common::virtual
 
   # This can be instaled in all nodes
   package {'rubygems':
@@ -50,12 +42,4 @@ class common::install {
 
   include mcollective, mcollective::client
 
-  cron { 'cron_mailto':
-    command     => '/bin/echo > /dev/null',
-    user        => 'root',
-    hour        => '0',
-    minute      => '0',
-    environment => "MAILTO=${common::params::cron_mailto}",
-    require     => Package[$common::params::cron_package]
-  }
 }

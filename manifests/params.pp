@@ -17,4 +17,5 @@ class common::params {
 
   $redhat_epel_package       = hiera('redhat_epel_package')
   $redhat_puppetlabs_package = hiera('redhat_puppetlabs_package')
+  $redhat_elrepo_package     = hiera('redhat_elrepo_package')
 }

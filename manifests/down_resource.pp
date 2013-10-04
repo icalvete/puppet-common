@@ -14,6 +14,7 @@ define common::down_resource (
   if ! $domain {
     fail('domain parameter can\'t be empty')
   }
+
   if ! $resource {
     fail('resource parameter can\'t be empty')
   }
