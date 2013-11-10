@@ -25,4 +25,12 @@ class common::virtual {
   @package {'ruby-devel':
     ensure => present
   }
+
+  @package {'ruby1.8-dev':
+    ensure => present
+  }
+
+  @package {'ruby1.9.1-dev':
+    ensure => present
+  }
 }

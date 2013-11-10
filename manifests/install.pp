@@ -1,18 +1,5 @@
 class common::install {
 
-  case $::osfamily {
-
-    /^(Debian|Ubuntu)$/: {
-      include common::debian::install
-    }
-    /^(CentOS|RedHat)$/: {
-      include common::redhat::install
-    }
-    default: {
-      fail ("${::operatingsystem} not supported.")
-    }
-  }
-
   include common::virtual
 
   # This can be instaled in all nodes
@@ -36,10 +23,29 @@ class common::install {
     ensure  => present
   }
 
+  case $::osfamily {
+
+    /^(Debian|Ubuntu)$/: {
+      class {common::debian::install:
+        before => Class['mcollective', 'mcollective::client']
+      }
+    }
+    /^(CentOS|RedHat)$/: {
+      include common::redhat::install
+    }
+    default: {
+      fail ("${::operatingsystem} not supported.")
+    }
+  }
+
   class {'collectd':
     amqp_enabled => false
   }
 
-  include mcollective, mcollective::client
+  class  {'mcollective':
+    before => Class['mcollective::client']
+  }
+
+  include mcollective::client
 
 }

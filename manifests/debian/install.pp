@@ -13,14 +13,28 @@ class common::debian::install inherits common::debian {
     cwd     => '/tmp/',
     command => "/usr/bin/dpkg -i ${common::debian::puppetlabs_package}",
     require => Common::Down_resource['puppetlabs_debian_get_package'],
-    unless  => '/usr/bin/dpkg -l puppet* | grep puppetlabs-release'
+    notify  => Exec['puppetlabs_debian_config_package']
   }
 
   exec {'puppetlabs_debian_config_package':
     cwd     => '/tmp/',
     command => '/usr/bin/apt-get update',
     require => Exec['puppetlabs_debian_install_package'],
-    unless  => '/usr/bin/dpkg -l puppetlabs-release | grep ii'
   }
 
+  case $::operatingsystemrelease {
+
+    '12.04': {
+      realize Package['ruby1.8-dev']
+    }
+    '13.04': {
+      realize Package['ruby1.9.1-dev']
+    }
+    '13.10': {
+      realize Package['ruby1.9.1-dev']
+    }
+    default:{
+
+    }
+  }
 }
