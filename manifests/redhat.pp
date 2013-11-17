@@ -1,1 +1,4 @@
-class common::redhat {}
+class common::redhat {
+
+  $selinux = 'permissive'
+}

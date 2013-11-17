@@ -19,6 +19,10 @@ class common::install {
     ensure  => present
   }
 
+  package {'ntpdate':
+    ensure  => present
+  }
+
   package {$common::params::cron_package:
     ensure  => present
   }
@@ -26,7 +30,7 @@ class common::install {
   case $::osfamily {
 
     /^(Debian|Ubuntu)$/: {
-      class {common::debian::install:
+      class {'common::debian::install':
         before => Class['mcollective', 'mcollective::client']
       }
     }
