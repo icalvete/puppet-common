@@ -30,6 +30,8 @@ class common::install {
   case $::osfamily {
 
     /^(Debian|Ubuntu)$/: {
+      realize Package['stomp']
+
       class {'common::debian::install':
         before => Class['mcollective', 'mcollective::client']
       }
