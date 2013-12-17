@@ -37,4 +37,8 @@ class common::virtual {
   @package {'ruby1.9.1-dev':
     ensure => present
   }
+
+  @package {'daemon':
+    ensure => present
+  }
 }
