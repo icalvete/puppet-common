@@ -41,4 +41,8 @@ class common::virtual {
   @package {'daemon':
     ensure => present
   }
+
+  @package {'python-software-properties':
+    ensure => present
+  }
 }
