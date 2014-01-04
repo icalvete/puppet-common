@@ -1,10 +1,15 @@
 class common::install {
 
-  include common::virtual
-
   # This can be instaled in all nodes
   package {'rubygems':
     ensure => present
+  }
+
+  package {'stomp':
+    ensure   => present,
+    provider => 'gem',
+    require  => Package['rubygems'],
+    before   => Class['mcollective', 'mcollective::client']
   }
 
   package {'subversion':
@@ -30,11 +35,7 @@ class common::install {
   case $::osfamily {
 
     /^(Debian|Ubuntu)$/: {
-      realize Package['stomp']
-
-      class {'common::debian::install':
-        before => Class['mcollective', 'mcollective::client']
-      }
+      include common::debian::install
     }
     /^(CentOS|RedHat)$/: {
       include common::redhat::install
@@ -48,10 +49,6 @@ class common::install {
     amqp_enabled => false
   }
 
-  class  {'mcollective':
-    before => Class['mcollective::client']
-  }
-
+  include mcollective
   include mcollective::client
-
 }

@@ -21,11 +21,6 @@ class common::virtual {
     ensure   => present,
   }
 
-  @package {'stomp':
-    ensure   => present,
-    provider => 'gem'
-  }
-
   @package {'ruby-devel':
     ensure => present
   }
