@@ -12,6 +12,13 @@ class common::install {
     before   => Class['mcollective', 'mcollective::client']
   }
 
+  package {'mcollective':
+    ensure   => present,
+    provider => 'gem',
+    require  => Package['rubygems'],
+    before   => Class['mcollective', 'mcollective::client']
+  }
+
   package {'subversion':
     ensure  => present
   }
