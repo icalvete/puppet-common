@@ -12,11 +12,11 @@ class common::install {
     before   => Class['mcollective', 'mcollective::client']
   }
 
-  package {'mcollective':
-    ensure   => present,
-    provider => 'gem',
-    require  => Package['rubygems'],
-    before   => Class['mcollective', 'mcollective::client']
+  exec {'mcollective_gem':
+    command => '/usr/bin/gem install mcollective --no-ri --no-rdoc',
+    unless  => '/usr/bin/gem list | /bin/grep mcollective',
+    require => Package['rubygems'],
+    before  => Class['mcollective', 'mcollective::client']
   }
 
   package {'subversion':
