@@ -15,6 +15,6 @@ define common::add_env (
 
   augeas{"env_${name}":
     context => '/files/etc/environment',
-    changes => "set ${key} $value",
+    changes => "set ${key} \"$value\"",
   }
 }
