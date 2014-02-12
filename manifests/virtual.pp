@@ -13,10 +13,6 @@ class common::virtual {
     ensure => present
   }
 
-  @package {'erlang':
-    ensure => present
-  }
-
   @package {'libltdl7':
     ensure   => present,
   }
