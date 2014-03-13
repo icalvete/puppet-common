@@ -9,7 +9,7 @@ class common::debian {
       $puppetlabs_package = 'puppetlabs-release-raring.deb'
     }
     '13.10': {
-      $puppetlabs_package = 'puppetlabs-release-raring.deb'
+      $puppetlabs_package = 'puppetlabs-release-saucy.deb'
     }
     default: {
       fail ("${::operatingsystemrelease} not supported.")
