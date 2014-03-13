@@ -12,6 +12,12 @@ class common::install {
     before   => Class['mcollective', 'mcollective::client']
   }
 
+  package {'graphite_sender':
+    ensure   => present,
+    provider => 'gem',
+    require  => Package['rubygems'],
+  }
+
   exec {'mcollective_gem':
     command => '/usr/bin/gem install mcollective --no-ri --no-rdoc',
     unless  => '/usr/bin/gem list | /bin/grep mcollective',
