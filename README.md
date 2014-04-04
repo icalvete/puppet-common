@@ -21,6 +21,7 @@ Some common tools for puppet modules.
 
 ##Example:
 
+```puppet
     node fourandgo {
       $tenant = 'fourandgo'
 
@@ -49,6 +50,7 @@ Some common tools for puppet modules.
         resource => 'rabbitmq-server_3.1.5-1_all.deb',
       }
     }
+```
 
 ##TODO:
 
