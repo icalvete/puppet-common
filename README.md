@@ -52,6 +52,27 @@ Some common tools for puppet modules.
     }
 ```
 
+common::down_resources (Look the 's' at the end ). New define to download ans array of resources fron same repo.
+
+```
+  $package_agent = [
+    'check-mk-agent_1.2.5i2p1-2_all.deb',
+    'check-mk-agent-logwatch_1.2.5i2p1-2_all.deb'
+  ]
+
+  common::down_resources {$check_mk::agent::repo_resource_agent:
+    scheme    => $check_mk::agent::repo_scheme,
+    domain    => $check_mk::agent::repo_domain,
+    port      => $check_mk::agent::repo_port,
+    user      => $check_mk::agent::repo_user,
+    pass      => $check_mk::agent::repo_pass,
+    path      => $check_mk::agent::repo_path,
+    }
+
+```
+
+Internally, this calls to common::down_resource many times as elements in the array.
+
 ##TODO:
 
 Refactor for general purpose. 
