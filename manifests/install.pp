@@ -37,7 +37,11 @@ class common::install {
     ensure  => present
   }
 
-  package {'ntpdate':
+  package {'ntp':
+    ensure  => present
+  }
+
+  package {'xinetd':
     ensure  => present
   }
 
