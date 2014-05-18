@@ -11,6 +11,9 @@ class common::debian {
     '13.10': {
       $puppetlabs_package = 'puppetlabs-release-saucy.deb'
     }
+    '14.04': {
+      $puppetlabs_package = 'puppetlabs-release-trusty.deb'
+    }
     default: {
       fail ("${::operatingsystemrelease} not supported.")
     }

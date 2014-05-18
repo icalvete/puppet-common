@@ -1,27 +1,40 @@
 class common::install {
 
-  # This can be instaled in all nodes
-  package {'rubygems':
-    ensure => present
+  case $::osfamily {
+
+    /^(Debian|Ubuntu)$/: {
+
+      case $::operatingsystemrelease {
+        /^1[1-3]\.[0-9]{2}$/: {
+          # This can be instaled in all nodes
+          package {'rubygems':
+            ensure => present,
+            before => [Package['stomp', 'graphite_sender'], Exec['mcollective_gem']]
+          }
+        }
+        default:{}
+      }
+    }
+    /^(CentOS|RedHat)$/: {}
+    default: {
+      fail ("${::operatingsystem} not supported.")
+    }
   }
 
   package {'stomp':
     ensure   => present,
     provider => 'gem',
-    require  => Package['rubygems'],
     before   => Class['mcollective', 'mcollective::client']
   }
 
   package {'graphite_sender':
     ensure   => present,
     provider => 'gem',
-    require  => Package['rubygems'],
   }
 
   exec {'mcollective_gem':
     command => '/usr/bin/gem install mcollective --no-ri --no-rdoc',
     unless  => '/usr/bin/gem list | /bin/grep mcollective',
-    require => Package['rubygems'],
     before  => Class['mcollective', 'mcollective::client']
   }
 
