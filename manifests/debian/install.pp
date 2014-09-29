@@ -37,6 +37,10 @@ class common::debian::install inherits common::debian {
     }
     '14.04': {
       realize Package['ruby1.9.1-dev']
+      
+      package{'xinetd':
+        ensure => 'present'
+      }
     }
     default:{
 
