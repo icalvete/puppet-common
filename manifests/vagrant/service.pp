@@ -1,3 +1,3 @@
-class vagrant::service {
+class common::vagrant::service {
 }
 

@@ -1,4 +1,4 @@
-class vagrant::install {
+class common::vagrant::install {
 
   package {'xinetd':
     ensure => present

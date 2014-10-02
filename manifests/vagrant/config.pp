@@ -1,3 +1,3 @@
-class vagrant::config {
+class common::vagrant::config {
 }
 

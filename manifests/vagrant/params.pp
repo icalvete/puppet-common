@@ -1,3 +1,3 @@
-class vagrant::params {
+class common::vagrant::params {
 }
 
