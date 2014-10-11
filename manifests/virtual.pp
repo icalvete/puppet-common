@@ -40,4 +40,12 @@ class common::virtual {
   @package {'curl':
     ensure => present
   }
+
+  @package {'python-django':
+    ensure => present
+  }
+
+  @package {'python-django-dajax':
+    ensure => present
+  }
 }
