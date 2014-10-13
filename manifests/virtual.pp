@@ -1,6 +1,10 @@
 class common::virtual {
 
   # This packages can be realized in all manifest
+  @package {'make':
+    ensure => present
+  }
+
   @package {'openjdk-7-jre':
     ensure => present
   }
