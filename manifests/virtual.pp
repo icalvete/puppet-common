@@ -49,6 +49,18 @@ class common::virtual {
     ensure => present
   }
 
+  @package {'python-cairo':
+    ensure => present
+  }
+
+  @package {'python-django-tagging':
+    ensure => present
+  }
+
+  @package {'python-ldap':
+    ensure => present
+  }
+
   @package {'python-django-dajax':
     ensure => present
   }
