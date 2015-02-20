@@ -13,10 +13,7 @@ class common::config {
     }
   }
 
-  file{'backup_dir':
-    ensure => directory,
-    path   => $common::params::backup_dir
-  }
+  ensure_resource('file', $common::params::backup_dir, {'ensure' => 'directory'})
 
   cron { 'cron_mailto':
     command     => '/bin/echo > /dev/null',
