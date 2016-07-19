@@ -8,19 +8,7 @@ class common inherits params {
     require => Anchor['common::begin'],
   }
 
-  class {'common::install':
-    require => Class['common::virtual'],
-  }
-
-  class {'common::config':
-    require => Class['common::install']
-  }
-
-  class {'common::service':
-    require => Class['common::config']
-  }
-
   anchor {'common::end':
-    require => Class['common::service']
+    require => Class['common::virtual']
   }
 }
