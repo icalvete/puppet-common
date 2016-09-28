@@ -9,5 +9,8 @@ class common::vagrant::install {
   package {'xinetd':
     ensure => present
   }
+  package { 'software-properties-common':
+    ensure  => present
+  }
 }
 
