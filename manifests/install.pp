@@ -5,7 +5,7 @@ class common::install {
         /^xenial$/: {
           apt::ppa { 'ppa:openjdk-r/ppa':
             notify => Exec['apt_get_update']
-          } 
+          }
         }
       }
 
