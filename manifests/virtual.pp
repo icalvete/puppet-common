@@ -1,6 +1,14 @@
 class common::virtual {
 
   # This packages can be realized in all manifest
+  @package {'xinetd':
+    ensure => present
+  }
+
+  @package {'syslog-ng':
+    ensure => present
+  }
+
   @package {'make':
     ensure => present
   }
