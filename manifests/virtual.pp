@@ -49,14 +49,6 @@ class common::virtual {
     ensure => present
   }
 
-  @package {'python-software-properties':
-    ensure => present
-  }
-
-  @package {'software-properties-common':
-    ensure => present
-  }
-
   @package {'curl':
     ensure => present
   }
