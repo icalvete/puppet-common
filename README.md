@@ -1,10 +1,10 @@
-#puppet-common
+# puppet-common
 
 Some common tools for puppet modules.
 
 [![Build Status](https://secure.travis-ci.org/icalvete/puppet-common.png)](http://travis-ci.org/icalvete/puppet-common)
 
-##Actions:
+## Actions:
 
 * Set some environment variables (tenant, environment (dev|pre|int|pro) )
 * Set any environmet variable (common::add_env)
@@ -14,12 +14,12 @@ Some common tools for puppet modules.
 
 * if $::operatingsystem = Debian|Ubuntu|RedHat|CentOS include manifest with specific stuff will be included  
 
-##Requires:
+## Requires:
 
 * [hiera](http://docs.puppetlabs.com/hiera/1/index.html)
 
 
-##Example:
+## Example:
 
 ```puppet
     node fourandgo {
@@ -73,10 +73,10 @@ common::down_resources (Look the 's' at the end ). New define to download ans ar
 
 Internally, this calls to common::down_resource many times as elements in the array.
 
-##TODO:
+## TODO:
 
 Refactor for general purpose. 
 
-##Authors:
+## Authors:
 
 Israel Calvete Talavera <icalvete@gmail.com>
