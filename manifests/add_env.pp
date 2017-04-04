@@ -5,6 +5,8 @@ define common::add_env (
 
 ) {
 
+  include common
+
   if $key == '' {
     fail('key parameter can\'t be empty')
   }
