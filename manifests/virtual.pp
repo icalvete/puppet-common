@@ -4,6 +4,10 @@ class common::virtual {
   @package {'xinetd':
     ensure => present
   }
+  
+  @package {'software-properties-common':
+    ensure => present
+  }
 
   @package {'syslog-ng':
     ensure => present
