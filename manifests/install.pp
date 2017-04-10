@@ -3,6 +3,7 @@ class common::install {
     /^(Debian|Ubuntu)$/: {
       case $lsbdistcodename {
         /^xenial$/: {
+          include apt
           apt::ppa { 'ppa:openjdk-r/ppa':
             notify => Exec['apt_get_update']
           }
