@@ -17,6 +17,10 @@ class common::virtual {
     ensure => present
   }
 
+  @package {'default-jre':
+    ensure => present
+  }
+
   @package {'java-1.6.0-openjdk':
     ensure => present
   }
@@ -42,10 +46,6 @@ class common::virtual {
   }
 
   @package {'daemon':
-    ensure => present
-  }
-
-  @package {'python-software-properties':
     ensure => present
   }
 

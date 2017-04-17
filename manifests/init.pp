@@ -4,8 +4,12 @@ class common inherits params {
     before => Class['common::virtual']
   }
 
-  class {'common::virtual':
+  class {'common::install':
     require => Anchor['common::begin'],
+  }
+
+  class {'common::virtual':
+    require => Class['common::install'],
   }
 
   anchor {'common::end':

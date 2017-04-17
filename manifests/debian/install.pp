@@ -42,4 +42,9 @@ class common::debian::install inherits common::debian {
 
     }
   }
+
+  package { 'software-properties-common':
+    ensure  => present
+  }
+
 }
