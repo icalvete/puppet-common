@@ -1,10 +1,10 @@
 class common::install {
-  
+
   case $::operatingsystem {
     /^(Debian|Ubuntu)$/: {
       case $lsbdistcodename {
         /^xenial$/: {
-          include apt 
+          include apt
           package{'software-properties-common':}
           package{'git':}
           include apt
@@ -12,7 +12,7 @@ class common::install {
             notify => Exec['apt_get_update']
           }
         }
-      }   
+      }
 
       exec { 'apt_get_update':
         command     => "/usr/bin/apt-get update",
