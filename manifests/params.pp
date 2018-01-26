@@ -12,18 +12,34 @@ class common::params {
     }
   }
 
-  $backup_dir                = hiera('backup_dir', '/srv/backup')
-  $cron_mailto               = hiera('cron_mailto', 'icalvete@gmail.com')
+  $backup_dir = lookup(
+    'backup_dir',
+    String,
+    'first',
+    '/srv/backup'
+  )
+  $cron_mailto = lookup(
+    'cron_mailto',
+    String,
+    'first',
+    'icalvete@gmail.com'
+  )
 
-  $redhat_epel_package       = hiera(
+  $redhat_epel_package = lookup(
     'redhat_epel_package',
+    String,
+    'first',
     'http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm'
   )
-  $redhat_puppetlabs_package = hiera(
+  $redhat_puppetlabs_package = lookup(
     'redhat_puppetlabs_package',
+    String,
+    'first',
     'http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-7.noarch.rpm')
-  $redhat_elrepo_package     = hiera(
+  $redhat_elrepo_package = lookup(
     'redhat_elrepo_package',
+    String,
+    'first',
     'http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm'
   )
 }

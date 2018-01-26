@@ -1,4 +1,4 @@
-class common inherits params {
+class common inherits common::params {
 
   anchor {'common::begin':
     before => Class['common::virtual']
