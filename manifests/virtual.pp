@@ -33,23 +33,23 @@ class common::virtual {
     ensure   => present,
   }
 
-  @package {'ruby-devel':
-    ensure => present
-  }
-
-  @package {'ruby1.8-dev':
-    ensure => present
-  }
-
-  @package {'ruby1.9.1-dev':
-    ensure => present
-  }
-
   @package {'daemon':
     ensure => present
   }
 
   @package {'curl':
+    ensure => present
+  }
+
+  @package {'libmaxminddb-dev':
+    ensure => present
+  }
+
+  @package {'augeas-lenses':
+    ensure => present
+  }
+
+  @package {'autossh':
     ensure => present
   }
 }

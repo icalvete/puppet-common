@@ -14,13 +14,4 @@ class common::config {
   }
 
   ensure_resource('file', $common::params::backup_dir, {'ensure' => 'directory'})
-
-  cron { 'cron_mailto':
-    command     => '/bin/echo > /dev/null',
-    user        => 'root',
-    hour        => '0',
-    minute      => '0',
-    environment => "MAILTO=${common::params::cron_mailto}",
-    require     => Package[$common::params::cron_package]
-  }
 }
