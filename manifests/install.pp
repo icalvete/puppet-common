@@ -5,9 +5,10 @@ class common::install {
       case $lsbdistcodename {
         /^xenial$/: {
           include apt
+
           package{'software-properties-common':}
           package{'git':}
-          include apt
+
           apt::ppa { 'ppa:openjdk-r/ppa':
             notify => Exec['apt_get_update']
           }
