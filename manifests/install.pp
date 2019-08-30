@@ -3,7 +3,7 @@ class common::install {
   case $::operatingsystem {
     /^(Debian|Ubuntu)$/: {
       case $lsbdistcodename {
-        /^xenial$/: {
+        /^(xenial|bionic)$/: {
           include apt
 
           package{'software-properties-common':}
