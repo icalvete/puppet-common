@@ -3,8 +3,9 @@ class common::install {
   case $::operatingsystem {
     /^(Debian|Ubuntu)$/: {
       case $lsbdistcodename {
-        /^(xenial|bionic$)/: {
+        /^(xenial|bionic)$/: {
           include apt
+
           package{'software-properties-common':}
           package{['git', 'vim']:}
 
