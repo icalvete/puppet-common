@@ -10,6 +10,7 @@ class common::install {
           package{['git', 'vim']:}
 
           apt::ppa { 'ppa:openjdk-r/ppa':
+            require => Package['software-properties-common'],
             notify => Exec['apt_get_update']
           }
         }
