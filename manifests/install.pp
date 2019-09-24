@@ -3,11 +3,11 @@ class common::install {
   case $::operatingsystem {
     /^(Debian|Ubuntu)$/: {
       case $lsbdistcodename {
-        /^xenial$/: {
+        /^(xenial|bionic$)/: {
           include apt
           package{'software-properties-common':}
-          package{'git':}
-          include apt
+          package{['git', 'vim']:}
+
           apt::ppa { 'ppa:openjdk-r/ppa':
             notify => Exec['apt_get_update']
           }
