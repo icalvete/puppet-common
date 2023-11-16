@@ -4,7 +4,7 @@ class common::params {
     /^(Debian|Ubuntu)$/: {
       $cron_package = 'cron'
     }
-    /^(Redhat|CentOS)$/: {
+    /^(Redhat|CentOS|AlmaLinux)$/: {
       $cron_package = 'crontabs'
     }
     default: {
@@ -23,23 +23,5 @@ class common::params {
     String,
     'first',
     'icalvete@gmail.com'
-  )
-
-  $redhat_epel_package = lookup(
-    'redhat_epel_package',
-    String,
-    'first',
-    'http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm'
-  )
-  $redhat_puppetlabs_package = lookup(
-    'redhat_puppetlabs_package',
-    String,
-    'first',
-    'http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-7.noarch.rpm')
-  $redhat_elrepo_package = lookup(
-    'redhat_elrepo_package',
-    String,
-    'first',
-    'http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm'
   )
 }

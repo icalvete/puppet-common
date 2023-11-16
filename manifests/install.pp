@@ -2,12 +2,13 @@ class common::install {
 
   case $::operatingsystem {
     /^(Debian|Ubuntu)$/: {
+      package{['git', 'vim']:}
+
       case $lsbdistcodename {
         /^(xenial|bionic)$/: {
           include apt
 
           package{'software-properties-common':}
-          package{['git', 'vim']:}
 
           apt::ppa { 'ppa:openjdk-r/ppa':
             require => Package['software-properties-common'],
